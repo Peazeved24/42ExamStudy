@@ -1,0 +1,33 @@
+Write a function that swaps the contents of two integers the adresses of which
+are passed as parameters.
+
+Your function must be declared as follows:
+
+void	ft_swap(int *a, int *b);
+
+
+______________________________________________________________________________
+
+#include <stdio.h>
+#include <unistd.h>
+
+void    ft_swap(int *a, int *b)
+{
+    int swap = *a;
+    *a = *b;
+    *b = swap;
+}
+
+int main()
+{
+    int a = 13;
+    int b = 15;
+
+    printf("a = %i b = %i\n", a, b);
+
+
+   ft_swap(&a , &b);
+
+    printf("a = %i b = %i", a , b);
+    return 0;
+}

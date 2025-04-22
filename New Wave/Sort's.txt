@@ -1,0 +1,50 @@
+Introducao a algoritmos de insercao:
+
+
+	- algoritmos de ordenacao (ordem crescente) de arrays 
+		
+
+2 mais usado ( ou que devo usar )
+
+	- bubble sort:
+		- algoritmo de ordenacao lvl 1 :
+			- compara pares de valores (elementos) e os troca se tiverem fora de ordem
+
+ ## falha = caso tiver muitos elementos , bubble sort demora mais tempo##
+
+
+	- insertion sort :
+		- algoritmo de ordenacao lvl 2:
+
+			- percorrer o array da esquerda para  a direita (do fim ao inicio)
+			e insere os elementos na posicao correta.
+
+
+	
+## falha = muito elementos em ordens aleatorias.
+
+
+
+Syntax:
+
+insertion sort :
+
+	void insertionSort(int a[], int l)
+{
+    int j, temp;
+
+    for(int i = 1; i < l, i++)
+    {
+        temp =  a[i]; // segundo digito;
+        j = i -1; // primeiro digito
+        while(j >= 0 && a[j] > key)
+        {
+            a[j + 1] = a[j];
+            j = j - 1;
+        }
+        a[j + 1] = key; // proxima posicao sera a minha key.
+    }
+}
+
+
+

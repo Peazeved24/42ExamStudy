@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+char	*ft_strpbrk(const char *s1, const char *s2)
+{
+    int i = 0;
+    int j;
+    
+    while(s1[i])
+    {
+        j = 0;
+        while(s2[j])
+        {
+            if(s1[i] == s2[j])
+            {
+                return (char*)&s1[i]; // trasformar o const em um ponteiro (char*) na iagezima posicoa da minha s1.
+            }
+            j++;
+        }
+        i++;
+    }
+
+    return NULL;
+}
+
+
+int main()
+{
+    char a[] = "eu tenho 3 caes ,  1 gato , 2 patos";
+    char b[] =" 321";
+
+    char *result  = ft_strpbrk(a, b);
+
+    printf("%s", result);
+
+
+    return 0;
+
+
+}

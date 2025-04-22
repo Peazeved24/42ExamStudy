@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <unistd.h>
+
+typedef struct s_point // e dentro da struct onde estara as var que representam o  m e o n!
+{
+    int x; // linhas
+    int y; //colunas
+} t_point;
+
+
+void flood_fill2(char **tab, t_point size, t_point current , char target)
+{
+    if(current.x < 0 || current.x >= size.x || current.y < 0 || current.y >= size.y) // condicoes 
+    {
+        return;
+    }
+
+    if(tab[current.x][current.y] != target) // evitar mudar target indesejados
+    {
+        return;
+    }
+
+    tab[current.x][current.y] = 'F'; // novo target!
+
+
+    t_point direc[4] = {{0, -1}, {1, 0}, {-1, 0}, {0, 1}};
+
+    for(int i = 0; i < 4 ; i++)
+    {
+        t_point next = {current.x + direc[i].x, current.y + direc[i].y};
+        flood_fill2(tab, size, next, target);
+    }
+
+}
+
+void  flood_fill(char **tab, t_point size, t_point begin)
+{
+  
+    char target = tab[begin.y][begin.x]; // ponto inicial que SERA MUDADO!!
+
+    flood_fill2(tab, size, begin, target);
+} 
+
+ //tab == matriz
+ // size == o tamanho total de colunas e linhas.
+ // begin == o ponto de partida.

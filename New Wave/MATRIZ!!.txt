@@ -1,0 +1,150 @@
+
+MATRIZ == tabela de numeros (valores) em (m) linhas com (n) colunas ... pode ser representada com () ou [].
+
+
+a) { 6  7 }  	  3 x 2  === pois tem 3 linhas com  2 colunas!!!
+   { 4	0 }
+   { 2  1 };
+
+
+b)  [ 3 , 4, -5]  1 x 3; === 1 linha com 3 colunas!
+
+
+### os pontos inicias sao sempre 0!!!!!!!
+
+### x = colunas y = linhas // programacao.
+
+-----------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#define SIZE 5
+
+int main() {
+    char matriz[SIZE][SIZE] = {
+        {'.','.','#','.','.',},
+        {'.','#','#','#','.'},
+        {'#','#','.','#','#'},
+        {'.','#','#','#','.'},
+        {'.','.','#','.','.'}
+    };
+
+    // Imprimindo a matriz
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%c ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------
+#include <stdio.h>
+
+#define ROWS 5
+#define COLS 5
+
+void printMatrix(char matrix[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            printf("%c ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void floodFill(char matrix[ROWS][COLS], int x, int y) // aqui esta a  meu programa basica!
+{
+    if(x < 0 || x >= ROWS || y < 0 || y >= COLS) // CONDICAO PARA "EVITAR ERROS"!!!    
+    {
+        return;
+    }
+
+    if(matrix[x][y] != '.')
+    {
+        return;
+    }
+
+    matrix[x][y] = 'O';
+
+    floodFill(matrix,x + 1, y); // acima
+    floodFill(matrix,x - 1, y); // baixo
+    floodFill(matrix,x, y + 1); // Direita
+    floodFill(matrix,x, y - 1); // Esq
+
+}
+
+int main() {
+    char matrix[ROWS][COLS] = {
+        {'.', '.', '#', '.', '.'},
+        {'.', '#', '.', '#', '.'},
+        {'#', '.', '.', '.', '#'},
+        {'.', '#', '.', '#', '.'},
+        {'.', '.', '#', '.', '.'}
+    };
+
+    printf("Matriz original:\n");
+    printMatrix(matrix);
+
+    // Ponto inicial para o flood fill
+    int startX = 2, startY = 2;
+
+    floodFill(matrix, startX, startY);
+
+    printf("Matriz após flood fill:\n");
+    printMatrix(matrix);
+
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------
+
+#include <stdlib.h>
+
+typedef struct s_point
+{
+    int x;
+    int y;
+} t_point;
+
+void flood_fill_recursive(char **tab, t_point size, t_point current, char target)
+{
+    // Verifica se o ponto atual está fora dos limites
+    if (current.x < 0 || current.x >= size.x || current.y < 0 || current.y >= size.y)
+        return;
+
+    // Verifica se a célula atual não é o caractere alvo
+    if (tab[current.y][current.x] != target)
+        return;
+
+    // Preenche a célula atual
+    tab[current.y][current.x] = 'F';
+
+    // Preenche recursivamente as células adjacentes
+    t_point directions[4] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; 
+    for (int i = 0; i < 4; i++)
+    {
+        t_point next = {current.x + directions[i].x, current.y + directions[i].y};
+        flood_fill_recursive(tab, size, next, target);
+    }
+}
+
+void flood_fill(char **tab, t_point size, t_point begin)
+{
+    // Obtém o caractere alvo
+    char target = tab[begin.y][begin.x];
+
+    // Inicia o preenchimento recursivo
+    flood_fill_recursive(tab, size, begin, target);
+}
+
+
+
+
+
+{{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; 
+
+cima , direita , baixo , esquerda.
+

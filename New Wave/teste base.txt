@@ -1,0 +1,31 @@
+ft_atoibase:
+
+- pegar uma base == 16 -- e uma base mais abrangente! 01234567879abcedf;
+					         
+		- 2 - binaria = 0 / 1;
+		- 8 - octonogal = 0 - 8;
+		- 10 - decimal = 0 - 9;
+		- 16 - hexadecimal = 09/AF;
+
+==  vai entregar um valor em qualquer umas das bases ==  temos de converter la em decimal!
+
+
+	3 funcoes auxiliaries :
+
+	- responsavel por encontrar espacos
+
+	- converter maisuculas em minusculas
+	
+
+	- um funcao que referencia um valor a uma base!
+
+		- 1 array de char com a base 16 + um ptr que aponta para o primeiro digito.
+
+		- loop:
+		- enquanto o meu ptr n chegar ao fim + a dif n for superior a base dada
+			- e caso:
+				-ft que converte mais - min estive dentro do range do ptr
+
+		- entao = colocar numero ( ptr(ponteiro) - digits(array de char com a b16)
+	
+

@@ -1,0 +1,63 @@
+Assignment name  : ft_strdup
+Expected files   : ft_strdup.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strdup (man strdup).
+
+Your function must be declared as follows:
+
+char    *ft_strdup(char *src);
+
+
+--------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+int ft_sl(char *str)
+{
+    int i  = 0;
+
+    while(str[i])
+    {
+        i++;
+    }
+
+
+    return i;
+}
+
+char    *ft_strdup(char *src)
+{
+    int i = 0;
+    int size = ft_sl(src);
+    char *str = (char*)malloc((size + 1) *sizeof(char));
+
+    if(str == NULL)
+    {
+        printf("erro");
+        return NULL;
+    }
+
+    while(src[i])
+    {
+        str[i] = src[i];
+        i++;
+    }
+
+    str[i] = '\0';
+ 
+    return str;
+}
+
+int main()
+{
+    char a[] = "ze da manga";
+    char *b = ft_strdup(a);
+
+    printf("%s", b);
+
+    free(b);
+
+    return 0;
+}

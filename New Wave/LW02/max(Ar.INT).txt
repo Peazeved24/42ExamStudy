@@ -1,0 +1,51 @@
+Assignment name  : max
+Expected files   : max.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write the following function:
+
+int		max(int* tab, unsigned int len);
+
+The first parameter is an array of int, the second is the number of elements in
+the array.
+
+The function returns the largest number found in the array.
+
+If the array is empty, the function returns 0.
+
+--------------------------------------------------------------------------------
+#include <stdio.h>
+#include <unistd.h>
+
+int		max(int* tab, unsigned int len)
+{
+    if(tab == NULL || len <= 0)
+    {
+        return 0;
+    }
+
+    int max = tab[len--]; // max == a ultima posicao do array!
+
+    while(len--)
+    {
+        if(tab[len] > max) // se a minha posicao atualizada for superiro a minha max!(posicao antiga ou original)
+        {
+            max = tab[len]; // max atualiza para o valor dessa posicao!
+        }
+    }
+
+    return max;
+}
+
+
+int main()
+{
+    int tab[] = {1, 550, 80, 87, 5};
+    int len = 5;
+
+    printf("%i", max(tab, len));
+
+
+    return 0;
+}

@@ -1,0 +1,117 @@
+Assignment name  : pgcd
+Expected files   : pgcd.c
+Allowed functions: printf, atoi, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes two strings representing two strictly positive
+integers that fit in an int.
+
+Display their highest common denominator followed by a newline (It's always a
+strictly positive integer).
+
+If the number of parameters is not 2, display a newline.
+
+Examples:
+
+$> ./pgcd 42 10 | cat -e
+2$
+$> ./pgcd 42 12 | cat -e
+6$
+$> ./pgcd 14 77 | cat -e
+7$
+$> ./pgcd 17 3 | cat -e 
+1$
+$> ./pgcd | cat -e
+$
+
+
+--------------------------------------------------------------------------------
+
+Por exemplo, para calcular o MDC de 48 e 18:
+48 ÷ 18 = 2 resto 12
+18 ÷ 12 = 1 resto 6
+12 ÷ 6 = 2 resto 0
+O último valor não-zero (6) é o MDC.
+
+--------------------------------------------------------------------------------
+#include <stdio.h>
+#include <unistd.h>
+59 e 35
+
+
+1 = divisao de elementos.
+
+	- 59 / 35 = 1  (sobra 1)
+		
+2 =  multiplicar o menor element * sobra; (quanto do dividendo foi usado na operacao)
+	- 35 * 1 = 35
+
+3 - subtrair o maior element com a sobra (obter sobra final)
+
+	# 59 - 35 = 24;
+
+ - repete divisao do menor elemento com a sobra final
+
+	- 35 / 24 =  1;
+
+	24 * 1 = 24;
+
+	35 - 24 = 11;
+	---------
+	
+	24 / 11 =  2;
+
+	11 * 2 = 22
+
+	24 - 22 = 2;
+
+	----------
+	
+	
+	11 / 2 = 5 (resto)
+
+	2 * 5 = 10;
+
+	11 - 10 = 1; (sobra 1)
+
+        ---------
+
+		 
+	2 / 1 = 2;
+
+	2 * 2 = 4;
+
+	2 - 4 = -2; (0)
+	
+	mdc de 59 e 35 = 2;
+
+
+
+------------------------------------------------------------
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+unsigned int hcd(unsigned int a, unsigned int  b)
+{
+    while(b)
+    {
+        unsigned int  temp = b;
+        b = a % b;
+        a = temp;   
+    }
+
+    return a;
+}
+
+
+int main(int ac , char **av)
+{
+    int n1 = atoi(av[1]);
+    int n2 = atoi(av[2]);
+    
+    printf("%d", hcd(n1 , n2));
+
+    return 0;
+}

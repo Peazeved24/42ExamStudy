@@ -1,0 +1,20 @@
+#include <unistd.h>
+#include <stdio.h>
+#include "ft_list.h"
+
+void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
+{
+    t_list *current = begin_list;
+
+    while(current)
+    {
+       (*f)(current -> data);
+        current = current -> next;
+    }
+}
+
+(*f) == funcao
+(void *) == argumento;
+
+ (*f)(current -> data) == aplica a funcao ao dado(data) na x posicao atual;
+ current = current -> next; == atualiza para a proxima posicao (ate chegar ao fim)./

@@ -1,0 +1,68 @@
+Assignment name  : ft_list_size
+Expected files   : ft_list_size.c, ft_list.h
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write a function that returns the number of elements in the linked list that's
+passed to it.
+
+It must be declared as follows:
+
+int	ft_list_size(t_list *begin_list);
+
+You must use the following structure, and turn it in as a file called
+ft_list.h:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+--------------------------------------------------------------------------------
+
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+struct node  // estrutura que representa o meu node;
+  {
+      int value;
+      struct node* next;
+  };
+  typedef struct node node_t;
+
+void ft_printflist(node_t *head)
+{
+    node_t *temp = head;
+    while(temp)
+    {
+        printf("-%d\n", temp->value);
+        temp = temp->next;
+    }
+    printf("\n");
+
+}
+
+int main()
+{
+    node_t n1, n2, n3;
+    node_t  *head;
+
+    //elementos
+    n1.value = 49;
+    n2.value = 50;
+    n3.value = 69;
+
+
+    // criar caminhos
+    head = &n3;
+    n3.next = &n2;
+    n2.next = &n1;
+    n1.next = NULL; 
+
+    ft_printflist(head);
+
+    return 0;
+}

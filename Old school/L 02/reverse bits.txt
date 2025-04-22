@@ -1,0 +1,53 @@
+Assignment name  : reverse_bits
+Expected files   : reverse_bits.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that takes a byte, reverses it, bit by bit (like the
+example) and returns the result.
+
+Your function must be declared as follows:
+
+unsigned char	reverse_bits(unsigned char octet);
+
+Example:
+
+  1 byte
+_____________
+ 0010  0110
+	 ||
+	 \/
+ 0110  0100
+--------------------------------------------------------------------------------
+#include <stdio.h>
+
+unsigned  char ft_revbyte(unsigned char  octet)
+{
+    int i = 0;
+    int reverse = 0;
+
+    while(i < 8) // 8 == octet == conjuto de 8 bites.
+    {
+        reverse = reverse << 1; //ao mover para a esquerda , abrimos espaco para um bite
+        reverse  |= (octet & 1); // 1 == 00000001 = lsb 
+        octet >>= 1;
+        i++;
+    }
+
+    return reverse;
+}
+// reverte === esquerda!! (comeca do bit menos significativo ())
+// quando formos reverter pensar sempre em mover os bits para a esquerda !
+// & == AND = comparar todos bitAbit e caso  1 - 1 = 1 // caso n for 1 - 1 o resultado final e sempre 0!
+// |== or == comparar bitAbit e caso tiver 1 == sera 1 !// 
+// num byte == msb(esta no incio) - lsb (esta no fim)
+// 01234567 == 0(msb) - 7(lsb) (00000001 = 1 || 100000000 = 128)
+
+int main()
+{
+    unsigned char octet = 84;
+
+    printf("%u", ft_revbyte(octet));
+
+    return 0;
+}

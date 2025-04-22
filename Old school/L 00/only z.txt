@@ -1,0 +1,14 @@
+/* Write a program that displays a 'z' character on the standard output. */
+
+// so inside the 42 universe your ask to not use printf
+// which is use/industry standard but heres the alternative they want
+
+
+
+#include <unistd.h>
+
+int main(void)
+{
+    write(1, "z", 1);
+    return 0;
+}

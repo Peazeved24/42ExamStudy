@@ -1,0 +1,161 @@
+Assignment name  : ft_atoi_base
+Expected files   : ft_atoi_base.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that converts the string argument str (base N <= 16)
+to an integer (base 10) and returns it.
+
+The characters recognized in the input are: 0123456789abcdef
+Those are, of course, to be trimmed according to the requested base. For
+example, base 4 recognizes "0123" and base 16 recognizes "0123456789abcdef".
+
+Uppercase letters must also be recognized: "12fdb3" is the same as "12FDB3".
+
+Minus signs ('-') are interpreted only if they are the first character of the
+string.
+
+Your function must be declared as follows:
+
+int	ft_atoi_base(const char *str, int str_base
+
+--------------------------------------------------------------------------------
+
+digit[base] == c ;
+
+c == caracteres passados ;
+
+base e  o intervalo ;
+
+digit e o array de digitos validos na funcao;
+
+
+-if(digit[base] == c || digit2[base] == c)
+ se o caracteres passados(c) sao validos no indice(digit) do array dos digitos  valido(0-9/a-f||A-F)
+ 
+ ----------------------------------------
+ ex
+ base = 10;
+ digitos = 'A';
+ 
+char digit2[17] = "0123456789ABCDEF";
+
+
+  if(digit[10] == 'A');
+  digit[9] = '9';
+  ...
+  digit[0] = '0';
+  
+  return 0;
+  
+  A n se encontra no range de base 10; 
+  
+  
+  base = 16;
+  digito = 'A';
+  
+  char digit[17] = "0123456789ABCDEF";
+  
+  if(digit[16] == 'A')
+  
+  digit[15] == 'F';
+  ...
+  digit[10] == 'A'; 
+  ...
+  
+  retunr 1; ==  caracte: 'A'(c) ? que se encontra no range ==digit[10] = 'A';retorna 1;
+  
+  
+ 
+----------------------------------------
+base == sistema (2 , 8, 10 , 16);
+
+2 = 0 / 1; base binaria
+
+8 = 0 - 7 ; base octogonal
+
+10 = 0 - 9; base decimal
+ 
+16 = 0 - F; base hexadecimal
+
+ 
+
+----------------------------------------
+
+
+
+
+char ft_cc(char c) //mai - min 
+{
+    if(c >= 'A' && c <= 'Z')
+    {
+        return c - 'A' + 'a';
+    }
+
+    return c;
+}
+
+char ft_getdigits(char c, int base) // indice de caracteres
+{
+    char digits[] = "0123456789abcdef";
+    char *ptr = digits;
+
+    while(*ptr && ptr - digits < base)
+    {
+        if(ft_cc(c) == *ptr)
+        {
+            return ptr - digits;
+        }
+        ptr++;
+    }
+
+    return -1;
+}
+
+
+int ft_atoibase(char *str , int base) // funcap principal!
+{
+    int r = 0;
+    int s = 1;
+    int d;
+
+
+    if(str == NULL || base < 2 || base > 16) //condicoes n pretendidas!
+    {
+        return 0;
+    }
+
+    
+
+    if(*str == '+' || *str == '-') // s == negativo ou positivo
+    {
+        s = (*str == '-') ? -1 : 1; //  op.ternario para atribuir valor !
+        str++;
+    }
+
+    while(*str)
+    {
+        d = ft_getdigits(*str, base); // associar o  valor ao digito!
+
+        if(d == -1) // caso der erro!
+        {
+            break;
+        }
+
+        r =  r * base + d;
+        str++;
+    }
+
+    return r * s;
+}
+
+
+int main()
+{ 
+    int base = 16; // base pretendida!
+    char c[] = "1A"; // caracter que eu pretendo "mudar"
+
+    printf("%i", ft_atoibase(c,base));
+
+    return 0;
+}

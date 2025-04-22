@@ -1,0 +1,85 @@
+Escreva um programa que escreva uma sequência de números de 1 a 100 na saída
+padrão, todos separados por uma nova linha.
+
+Se o número for múltiplo de 3, o programa deverá escrever 'fizz'.
+
+Se o número for múltiplo de 5, o programa deverá escrever 'buzz'.
+
+Se o número for múltiplo de 3 e múltiplo de 5, o programa deve escrever
+'fizzbuzz' em vez disso.
+
+
+Exemple:
+
+$>./fizzbuzz
+1
+2
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+14
+fizzbuzz
+[...]
+97
+98
+fizz
+buzz
+$> 
+
+-----------------------------------------------------------------------------------
+#include <stdio.h>
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+
+void ft_putnbr(int n)
+{
+    if(n >= 10)
+    {
+        ft_putnbr(n / 10);
+    }
+    ft_putchar(n % 10 + '0');
+}
+
+int main()
+{
+    int i = 1;
+
+
+    while(i <= 100)
+    {
+        if(i % 3 == 0 && i % 5 == 0)
+        {
+            write(1, "fizzbuzz", 8);
+        }
+        else if(i % 3 == 0)
+        {
+            write(1, "fizz", 4);
+        }
+        else if(i % 5 == 0)
+        {
+            write(1, "buzz", 4);
+        }
+        else
+        {
+            ft_putnbr(i);
+        }
+        write(1, "\n", 1);
+        i++;
+    }
+
+    return 0;
+}
+

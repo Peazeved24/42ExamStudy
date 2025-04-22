@@ -1,0 +1,159 @@
+Assignment name  : ft_atoi_base
+Expected files   : ft_atoi_base.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that converts the string argument str (base N <= 16)
+to an integer (base 10) and returns it.
+
+The characters recognized in the input are: 0123456789abcdef
+Those are, of course, to be trimmed according to the requested base. For
+example, base 4 recognizes "0123" and base 16 recognizes "0123456789abcdef".
+
+Uppercase letters must also be recognized: "12fdb3" is the same as "12FDB3".
+
+Minus signs ('-') are interpreted only if they are the first character of the
+string.
+
+Your function must be declared as follows:
+
+int	ft_atoi_base(const char *str, int str_base
+
+--------------------------------------------------------------------------------
+
+digit[base] == c ;
+
+c == caracteres passados ;
+
+base e  o intervalo ;
+
+digit e o array de digitos validos na funcao;
+
+
+-if(digit[base] == c || digit2[base] == c)
+ se o caracteres passados(c) sao validos no indice(digit) do array dos digitos  valido(0-9/a-f||A-F)
+ 
+ ----------------------------------------
+ ex
+ base = 10;
+ digitos = 'A';
+ 
+char digit2[17] = "0123456789ABCDEF";
+
+
+  if(digit[10] == 'A');
+  digit[9] = '9';
+  ...
+  digit[0] = '0';
+  
+  return 0;
+  
+  A n se encontra no range de base 10; 
+  
+  
+  base = 16;
+  digito = 'A';
+  
+  char digit[17] = "0123456789ABCDEF";
+  
+  if(digit[16] == 'A')
+  
+  digit[15] == 'F';
+  ...
+  digit[10] == 'A'; 
+  ...
+  
+  retunr 1; ==  caracte: 'A'(c) ? que se encontra no range ==digit[10] = 'A';retorna 1;
+  
+  
+ 
+----------------------------------------
+base == sistema (2 , 8, 10 , 16)
+
+2 = 0, 1; base binaria
+
+8 = 0 -7 ; base octogonal
+
+10 = 0 - 9; base decimal
+ 
+16 = 0 - F; base hexadecimal
+
+----------------------------------------
+
+
+#include <stdio.h>
+
+int ft_blank(char c)
+{
+    return (c == ' ') ? 1 : 0; // encontra espacos.
+}
+
+
+int ft_valid(char c , int base) // caracteres e base ==
+{
+    char digit[17] = "0123456789abcdef"; // criar um array com os digitos validos
+    char digit2[17] = "0123456789ABCDEF";
+    
+     for(int i = 0; i < base ;  i++)// enquanto n chegar a 0;" verificar todos"
+    {
+        if(digit[base] == c || digit2[base] == c) //c tiver dentro do array = 1
+        {
+            return 1;
+        }
+    }
+    
+    return 0;  // retorno 0 se n tiver .
+}
+
+int ft_value(char c) // retonar o  c em seu valor de int = p.d
+{
+    if(c >= 'a' && c <= 'f')
+    {
+        return c - 'a' + 10;  //c = b = b -a =  1 + 10 = 11 = 2p do array,
+    }
+    
+    else if(c >= 'A' && c<= 'F')
+    {
+        return c - 'A' + 10;
+    }
+    else if(c >= '0' &&  c<= '9')
+    {
+        return c - '0';
+    }
+    
+    return 0;
+}
+
+int ft_atoi_base(char *str ,int base)
+{
+    int result = 0;// armaznea o resultado final;
+    
+    int  sign = (*str == '-') ? -1 : 1;
+    (*str == '-'|| *str == '+') ? str++ : 0; // sinal (- , +)
+    
+    
+    while(ft_blank(*str))
+    {
+        str++;  // ignora espacos da funcao 
+    }
+    
+   
+    while(ft_valid(*str, base))  // verifica se os caracteres passados sao validos
+    {
+        result = result * base + ft_value(*str++);
+    }
+    
+    return(result * sign);
+}
+
+int main()
+{
+	int base = 2;
+	char a[]= "010101";
+
+	printf("%d", ft_atoi_base(a, base));
+
+
+	return 0;
+  
+} 

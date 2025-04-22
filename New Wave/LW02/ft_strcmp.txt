@@ -1,0 +1,45 @@
+Assignment name  : ft_strcmp
+Expected files   : ft_strcmp.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strcmp (man strcmp).
+
+Your function must be declared as follows:
+
+int ft_strcmp(char *s1, char *s2)
+
+
+--------------------------------------------------------------------------------
+
+
+#include <stdio.h>
+#include <unistd.h>
+
+int ft_strcmp(char *s1, char *s2)
+{
+    int i = 0;
+
+    while(s1[i] && s2[i])
+    {
+        if(s1[i] != s2[i])
+        {
+            return s1[i] - s2[i];
+        }
+        i++;
+    }
+
+    return s1[i] - s2[i];
+}
+
+int main(int ac, char **av)
+{
+        char a[10] = "ola"
+        char b[10] = "OLa";
+
+    int result = ft_strcmp(a, b);
+    printf("%d", result);
+
+        return 0;
+
+}

@@ -1,0 +1,128 @@
+#include <stdio.h> 
+#include <unistd.h>
+#include <stdlib.h>
+
+int ft_blank(char c)
+{
+    return (c >= 9 && c <= 13 || c == 32);
+}
+
+int ft_wc(char *str)
+{
+    int flag = 0;
+    int wc = 0;
+
+    while(*str)
+    {
+        if(ft_blank(*str))
+        {
+            flag = 0;
+        }
+        else if(flag == 0)
+        {
+            flag = 1;
+            wc++;
+        }
+
+        str++;
+    }
+
+    return wc;
+}
+
+char* ft_getW(char *str)
+{
+    int  len = 0;
+
+    while(str[len] && !ft_blank(str[len])) // pegar o tamanho da primeira palavra
+    {
+        len++;
+    }
+
+    char *word = (char*)malloc((len + 1) * sizeof(char)); // ptr que contera a minha palavra
+
+    if(word == NULL)
+    {
+        return NULL;
+    }
+
+    for(int i = 0; i < len ; i++)
+    {
+        word[i] = str[i];
+    }
+
+    word[len] = '\0';
+
+    return word;
+}
+
+
+char    **ft_split(char *str)
+{
+    int wc = ft_wc(str); // pegar o numero total de palavras dentro da str;
+    char **words = (char**)malloc((wc + 1) *sizeof(char*));
+    int i = 0;
+
+    if(words == NULL)
+    {
+        return NULL;
+    }
+
+    while(*str)
+    {
+        if(!ft_blank(*str))
+        {
+            words[i] = ft_getW(str); //associar o meu ptr (palavra) ao meu array de ptr (words[i]);
+            if(words[i] == NULL)
+            {
+                while(i > 0)
+                {
+                    free(words[--i]); // remove os caracteres
+                }
+                free(words); // remove o array.
+                return NULL; // retorna erro.
+            }
+            i++; // incrementa para a proxima posicao do array.
+            while(*str && !ft_blank(*str)) // avanca para o proximo.!
+            {
+                str++;
+            }
+        }
+        else // caso for espacos
+        {
+            str++; // ingnora
+        }  
+    }
+
+    words[i] = NULL; // chegar ao fim do array;
+
+
+    return words;
+}
+
+===================================================================================
+
+int main()
+{
+    char *str = "ola meus amigos";
+    char **result = ft_split(str);
+    int i  =0;
+    
+    if(result)
+    {
+        while(result[i] != NULL)
+        {
+            printf("%s " ,result[i++]);
+        }
+        free(result[i]);
+        free(result);
+    }
+
+
+
+    
+    return 0;
+}
+
+
+

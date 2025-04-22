@@ -1,0 +1,72 @@
+ft_slit(str to word)
+
+
+3 ft_aux
+
+1 ft_blank == v;
+
+
+2 ft_wc :
+	- ft que conta o nr de palavras dentro de uma frase;
+				- uso de 2 var (wc = 0 / flag= 0)
+	- enquanto a *str n chega o fim 
+		- e caso ft blank for true == flag = 0;
+			-else if(flag == 0)
+				- wc (numero de palavras incrementa)(e para ao encontrar espacos)
+					- flag = 1;
+					
+
+3 - char* ft_getWord:
+	-ft que retorna um *ptr para cada palavra dentro e uma str;
+
+		- uma var = len;
+
+			- loop que pegue a minha primeira palavra;
+				- while(str[len] && !ft_blank(*str)) - str++ / len++;
+
+		- o meu ptr que contera a minha palavra 
+			malloc usando o meu len + 1;
+
+		for loop que ira passer os caracteres da minha str == word 
+							word[i] = str[i] / i++;
+
+		- garantir que o meu word chegue ao fim ... return word;
+
+
+4 -ft principal 
+
+	3 var :
+		1 - numero de palavras da str ;
+		2 - array de ptr que armazena as palavras obtidas por getW.
+		3 - index.
+
+
+	loop que verifique a minha *str ate ao fim:
+
+		- passer os meus ptr obtidos por getW ao array de ptr
+			- word[i] = ft_getW(str);
+	
+		- codincao de seguranca:
+			
+			- loop que elimina os caractees do ## final ao inicio
+				free(word[--i]);
+			- fora do loop 
+					- free(word) // remove o array
+					- return NULL;
+
+		- passa para a proxima posicao do array == i++
+			
+		-passa para o proximo n espaco
+
+		caso for 
+
+			else
+			{
+				str++;s
+			}
+		
+
+		free(word) // remove o array
+
+		return words;
+				

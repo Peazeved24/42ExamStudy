@@ -1,0 +1,47 @@
+/* Write a program that displays the alphabet, with even letters in uppercase, and
+odd letters in lowercase, followed by a newline.
+
+Example:
+
+$> ./maff_alpha | cat -e
+caBcDeFgHiJkLmNoPqRsTuVwXyZ$
+*/
+
+---------------------------------------------------------------------------------------------------------------------------
+#include <unistd.h>
+
+ 
+
+ void ft_putchar(char c)
+ {
+  write(1, &c , 1);
+ }
+
+
+ int main()
+ {
+  int a = 'a';
+  int b = 'B';
+
+  while(a <= 'y' && b <= 'Z')
+  {
+    ft_putchar(a);
+    ft_putchar(b);
+     a = a + 2;
+     b = b + 2; 
+  }
+
+ write(1, "\n", 1);
+
+  return 0;
+ }
+-------------------------------------------------------------------------------------------------------------------------------
+(facil)
+
+int main(void)
+
+{
+	write(1, "aBcDeFgHiJkLmNoPqRsTuVwXyZ\n",27);
+        return 0;
+
+}

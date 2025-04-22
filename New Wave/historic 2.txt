@@ -1,0 +1,82 @@
+Start = 29/10/24;
+
+exam 1: 
+
+rever : str_cpy, fist_word, r13, 
+
+fist_word : v;
+fizzbuzz :v
+ft_putstr : v
+ft_strcpy = v;
+ft_strlen = v;
+ft_swap = v;
+ft_repeat alpha= v;
+rev_print = v;
+rot13= v;
+rotone= v;
+search and replace = v;
+ulstr = v;
+
+exam 2 :
+
+REVER SEMPRE! : spn(e a sua familia) ,streev(in place), union , wd_match, last_word. 
+
+alpha_mirror = v;
+camel_to_snake = v;
+do_op = v
+atoi = v
+ft_strcmp = v
+ft_strCSPN = v;
+ft_strdup = v;
+ft_strrev = v;
+is_power_of_2 = V; 
+ft_strPBRK = v;
+ft_strSPN = v;
+printf_bits = v;
+reverse_bits = v;
+swap_bits = v;
+snake to camel = v;
+inter= v;
+last_word= v;
+union = v;
+wdmatch = v;
+max = v;
+last_word = v; 
+
+
+
+
+REVER SEMPRE = strcap 
+
+add_prime_sum = v;	
+epur_str = v;
+expand_str = v;
+ft_atoi_base = v; 
+ft_list_size = v;
+ft_range = v;
+ft_rrange = v;
+hidenp = v;
+lcm = v;
+paramsum = v;
+pgcd = v;
+print_hex = v;
+str_capitalizer = v; 
+rstr_capitalizer = v;
+tab_mult = v;
+
+
+Dragao = exame4(split, rostring, rev_wst, sort_in_tab, sort_list) , str_cap(todos) , printfHexa, atois!(todos);
+
+flood_fill = v;
+fprime = v;
+ft_itoa = v;
+ft_list_foreach = v;
+ft_list_remove_if = v;
+-----------------------------------------
+ft_split = v;
+rostring = v;
+rev_wst = v;
+sort_in_tab = v; ( Insertion Sort) ESTUDAR!!!!!!!
+sort_list = v; (ft_swap == lst) 
+
+GG == 15/1/25.

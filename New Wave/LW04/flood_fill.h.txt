@@ -1,0 +1,9 @@
+#ifndef FLOOD_FILL // defenir o nome do arquivo (puramente pessoal)
+#define FLOOD_FILL //   repete
+
+typedef struct 	s_point { // struct e a suas cordenadas.
+    int 		x;				
+    int 		y;				
+} 				t_point;
+
+#endif // acaba
